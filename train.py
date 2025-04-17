@@ -13,8 +13,8 @@ from model.loss import *
 from model.load_param_data import  load_dataset, load_param
 
 # model
-from model.model_DNANet import  Res_CBAM_block
-from model.model_DNANet import  DNANet
+from model.model_UFNet import  Res_CBAM_block
+from model.model_UFNet import  UFNet
 
 class Trainer(object):
     def __init__(self, args):
@@ -41,8 +41,8 @@ class Trainer(object):
         self.test_data  = DataLoader(dataset=testset,  batch_size=args.test_batch_size, num_workers=args.workers,drop_last=False)
 
         # Choose and load model (this paper is finished by one GPU)
-        if args.model   == 'DNANet':
-            model       = DNANet(num_classes=1,input_channels=args.in_channels, block=Res_CBAM_block, num_blocks=num_blocks, nb_filter=nb_filter, deep_supervision=args.deep_supervision)
+        if args.model   == 'UFNet':
+            model       = UFNet(num_classes=1,input_channels=args.in_channels, block=Res_CBAM_block, num_blocks=num_blocks, nb_filter=nb_filter, deep_supervision=args.deep_supervision)
 
         model           = model.cuda()
         model.apply(weights_init_xavier)
