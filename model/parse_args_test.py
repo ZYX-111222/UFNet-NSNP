@@ -2,10 +2,10 @@ from model.utils import *
 
 def parse_args():
     """Training Options for Segmentation Experiments"""
-    parser = argparse.ArgumentParser(description='Dense_Nested_Attention_Network_For_SIRST')
+    parser = argparse.ArgumentParser(description='UFNet-NSNP')
     # choose model
-    parser.add_argument('--model', type=str, default='DNANet',
-                        help='model name: DNANet')
+    parser.add_argument('--model', type=str, default='UFNet',
+                        help='model name: UFNet')
 
     # parameter for DNANet
     parser.add_argument('--channel_size', type=str, default='three',
@@ -22,9 +22,9 @@ def parse_args():
                         help='NUDT-SIRST_DNANet_31_07_2021_14_50_57_wDS,'
                              'NUAA-SIRST_DNANet_28_07_2021_05_21_33_wDS')
     parser.add_argument('--model_dir', type=str,
-                        default = 'NUAA-SIRST_DNANet_30_11_2024_00_07_48_wDS/mIoU__DNANet_NUAA-SIRST.pth.tar',
-                        help    = 'NUDT-SIRST_DNANet_31_07_2021_14_50_57_wDS/mIoU__DNANet_NUDT-SIRST_epoch.pth.tar,'
-                                  'NUAA-SIRST_DNANet_28_07_2021_05_21_33_wDS/mIoU__DNANet_NUAA-SIRST_epoch.pth.tar')
+                        default = 'NUAA-SIRST_UFNet_30_11_2024_00_07_48_wDS/mIoU__UFNet_NUAA-SIRST.pth.tar',
+                        help    = 'NUAA-SIRST_UFNet_31_07_2024_14_50_57_wDS/mIoU__UFNet_NUDT-SIRST_epoch.pth.tar,'
+                                )
     parser.add_argument('--mode', type=str, default='TXT', help='mode name:  TXT, Ratio')
     parser.add_argument('--test_size', type=float, default='0.5', help='when --mode==Ratio')
     parser.add_argument('--root', type=str, default='dataset/')
@@ -35,9 +35,9 @@ def parse_args():
                         metavar='N', help='dataloader threads')
     parser.add_argument('--in_channels', type=int, default=3,
                         help='in_channel=3 for pre-process')
-    parser.add_argument('--base_size', type=int, default=256,
+    parser.add_argument('--base_size', type=int, default=320,
                         help='base image size')
-    parser.add_argument('--crop_size', type=int, default=256,
+    parser.add_argument('--crop_size', type=int, default=320,
                         help='crop image size')
 
     #  hyper params for training
@@ -45,7 +45,7 @@ def parse_args():
                         help='number of epochs to train (default: 110)')
     parser.add_argument('--test_batch_size', type=int, default=1,
                         metavar='N', help='input batch size for \
-                        testing (default: 32)')
+                        testing (default: 1)')
 
     # cuda and logging
     parser.add_argument('--gpus', type=str, default='0',
