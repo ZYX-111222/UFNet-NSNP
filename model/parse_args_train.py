@@ -2,9 +2,9 @@ from model.utils import *
 
 def parse_args():
     """Training Options for Segmentation Experiments"""
-    parser = argparse.ArgumentParser(description='Dense_Nested_Attention_Network_For_SIRST')
+    parser = argparse.ArgumentParser(description='UFNet-NSNP')
     # choose model
-    parser.add_argument('--model', type=str, default='DNANet',
+    parser.add_argument('--model', type=str, default='UFNet',
                         help='model name: DNANet')
     # parameter for DNANet
     parser.add_argument('--channel_size', type=str, default='three',
@@ -16,7 +16,7 @@ def parse_args():
 
     # data and pre-process
     parser.add_argument('--dataset', type=str, default='NUAA-SIRST',
-                        help='dataset name:  NUDT-SIRST, NUAA-SIRST, IRSTD-1k')
+                        help='dataset name: NUAA-SIRST, IRSTD-1k')
     parser.add_argument('--mode', type=str, default='TXT', help='mode name:  TXT, Ratio')
     parser.add_argument('--test_size', type=float, default='0.5', help='when mode==Ratio')
     parser.add_argument('--root', type=str, default='dataset/')
