@@ -213,7 +213,7 @@ class Res_CBAM_block(nn.Module):
         out = self.relu(out)
         return out
 
-class DNANet(nn.Module):
+class UFNet(nn.Module):
     def __init__(self, num_classes, input_channels, block, num_blocks, nb_filter, deep_supervision=False):
         super(DNANet, self).__init__()
         self.relu = nn.ReLU(inplace = True)
